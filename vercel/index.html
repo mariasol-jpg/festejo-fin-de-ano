@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Festejo de fin de año · improm</title>
+<meta name="description" content="Viernes 04 de diciembre, 20 hs · Presidente Bar, Hipódromo de San Isidro. Confirmá tu asistencia.">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<style>
+:root{
+  --improm-graphite:#2e2e34; --improm-ink:#3a3838; --improm-silver:#e5e5e5; --improm-white:#ffffff;
+  --improm-blue:#2b3eb8; --improm-blue-deep:#1e2c8c; --improm-blue-soft:#7c8cf0;
+  --grey-050:#f4f4f4; --grey-100:#e5e5e5; --grey-200:#cfcfcf; --grey-300:#9e9e9e; --grey-400:#868686; --grey-500:#6e6e6e; --grey-600:#585858;
+  --accent:#6e6e6e; --accent-hover:var(--grey-600); --accent-on-dark:var(--grey-300);
+  --highlight:var(--improm-blue); --highlight-hover:var(--improm-blue-deep); --highlight-on-dark:var(--improm-blue-soft);
+  --text-primary:var(--improm-ink); --text-secondary:var(--grey-500); --text-muted:var(--grey-400); --text-inverse:var(--improm-white);
+  --surface-page:var(--improm-white); --surface-muted:var(--grey-050); --surface-card:var(--improm-white); --surface-inverse:var(--improm-graphite);
+  --border-subtle:var(--grey-100); --border-default:var(--grey-200); --border-strong:var(--improm-graphite);
+  --state-disabled-bg:var(--grey-100); --state-disabled-fg:var(--grey-300); --focus-ring:var(--improm-graphite);
+  --ok:#1f7a4a; --err:#b3261e;
+  --font-core:"Poppins",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --radius-sm:4px; --shadow-sm:0 1px 2px rgba(46,46,52,.08); --ease:cubic-bezier(.4,0,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-core);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.label{font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);line-height:1.2}
+
+.cover{position:relative;background:var(--surface-inverse);color:var(--text-inverse);overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;background:url(assets/bg-texture-dots-dark.png) right bottom/cover no-repeat;pointer-events:none}
+.cover .bar{position:relative;height:14px;background:var(--highlight)}
+.cover .wrap{position:relative;padding-block:40px 64px;display:grid;gap:28px}
+.cover .logo{width:200px;height:auto;display:block}
+.cover .label{color:var(--accent-on-dark)}
+.emo-row{font-size:32px;letter-spacing:.18em;line-height:1}
+.cover h1{font-weight:800;font-size:clamp(44px,8.5vw,88px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance;max-width:12ch;overflow-wrap:anywhere}
+.cover .when{font-weight:300;font-size:clamp(22px,3.4vw,32px);line-height:1.2;margin:0}
+.cover .when b{font-weight:700;color:var(--highlight-on-dark)}
+.cover .lead{max-width:52ch;margin:0;color:var(--improm-silver);font-size:17px;display:grid;gap:6px}.cover .lead p{margin:0}.cover .lead .lead-title{font-weight:600;font-size:20px;color:var(--text-inverse)}
+.fotos{padding-block:56px;border-top:1px solid var(--border-subtle)}.fotos-inner{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}.fotos-text{display:grid;gap:8px;max-width:56ch;min-width:0}.fotos-text p{margin:0;color:var(--text-secondary)}@media (max-width:600px){.fotos{padding-block:48px}.fotos-inner .btn{width:100%}}
+.cover-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;font:600 18px/1 var(--font-core);letter-spacing:.02em;border-radius:var(--radius-sm);border:1px solid transparent;text-decoration:none;cursor:pointer;transition:background .18s var(--ease),transform .12s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.btn-highlight{background:var(--highlight);color:var(--text-inverse)}
+.btn-highlight:hover{background:var(--highlight-hover)}
+.cover .btn:focus-visible{outline-color:var(--improm-white)}
+.btn-primary{background:var(--accent);color:var(--text-inverse)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-primary:disabled{background:var(--state-disabled-bg);color:var(--state-disabled-fg);cursor:not-allowed;transform:none}
+.countdown{font-size:14px;color:var(--accent-on-dark)}
+.countdown b{color:var(--text-inverse);font-weight:600}
+
+.ficha-sec{padding-block:64px}
+.ficha-head{display:grid;gap:8px;margin-bottom:32px}
+h2{font-weight:800;font-size:clamp(30px,4.5vw,43px);line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.rule{width:56px;height:4px;background:var(--highlight);margin-top:12px}
+.ficha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--border-default)}
+.ficha > div{padding:24px 20px 24px 0;display:grid;gap:8px;align-content:start;min-width:0;border-bottom:1px solid var(--border-default)}
+.ficha > div + div{padding-left:20px;border-left:1px solid var(--border-subtle)}
+.ficha .big{font-weight:800;font-size:32px;line-height:1.05;color:var(--highlight);font-variant-numeric:tabular-nums}
+.ficha .val{font-weight:600;font-size:18px;line-height:1.3}
+.ficha .sub{color:var(--text-secondary);font-size:15px}
+.ficha a{color:var(--highlight);font-weight:500;text-underline-offset:3px}
+.ficha a:hover{color:var(--highlight-hover)}
+@media (max-width:820px){.ficha{grid-template-columns:repeat(2,minmax(0,1fr))}.ficha > div:nth-child(odd){padding-left:0;border-left:0}}
+@media (max-width:440px){.ficha{grid-template-columns:minmax(0,1fr)}.ficha > div,.ficha > div + div{padding-left:0;border-left:0}}
+.values{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:16px;max-width:70ch}
+.values li{font-size:17px;line-height:1.5}
+.values li .emo{display:inline-block;width:1.6em;font-size:20px;line-height:1}
+.values strong{font-weight:600}
+
+.rsvp{background:var(--surface-muted);padding-block:64px}
+.rsvp-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch;box-shadow:var(--shadow-sm)}
+@media (max-width:820px){.rsvp-grid{grid-template-columns:minmax(0,1fr)}}
+.rsvp-field{position:relative;background:var(--highlight);color:var(--text-inverse);padding:40px 32px;display:grid;gap:16px;align-content:start;overflow:hidden}
+.rsvp-field::before{content:"";position:absolute;inset:0;background:url(assets/bg-pattern-highlight.png) right bottom/cover no-repeat;pointer-events:none}
+.rsvp-field > *{position:relative}
+.rsvp-field .label{color:var(--improm-silver)}
+.rsvp-field h2{color:var(--text-inverse)}
+.rsvp-field p{margin:0;color:var(--improm-silver);max-width:40ch}
+form{background:var(--surface-card);padding:40px 32px;display:grid;gap:24px;border:1px solid var(--border-subtle);border-left:0}
+@media (max-width:820px){form{border-left:1px solid var(--border-subtle);border-top:0}}
+@media (max-width:440px){.rsvp-field,form{padding:32px 20px}}
+label.field,fieldset{display:grid;gap:8px;margin:0;border:0;padding:0;min-width:0}
+.flabel,legend{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);padding:0}
+input[type=text],textarea{width:100%;font:400 15px/1.4 var(--font-core);color:var(--text-primary);background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-sm);padding:0 12px;height:40px;transition:border-color .18s var(--ease)}
+textarea{height:auto;min-height:88px;padding:10px 12px;resize:vertical}
+input[type=text]:focus,textarea:focus{border-color:var(--border-strong);outline:2px solid var(--focus-ring);outline-offset:2px}
+textarea::placeholder{color:var(--text-muted)}
+.choices{display:flex;gap:8px;flex-wrap:wrap}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.choice span{display:inline-flex;align-items:center;justify-content:center;min-width:96px;height:40px;padding:0 20px;border:1px solid var(--border-default);border-radius:var(--radius-sm);font-weight:600;font-size:15px;cursor:pointer;transition:background .18s var(--ease),border-color .18s var(--ease)}
+.choice:hover span{background:var(--surface-muted)}
+.choice input:checked + span{background:var(--surface-inverse);border-color:var(--surface-inverse);color:var(--text-inverse)}
+.choice input:focus-visible + span{outline:2px solid var(--focus-ring);outline-offset:2px}
+.form-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.status{font-size:14px;color:var(--text-secondary);margin:0;min-height:1.4em}
+.status.ok{color:var(--ok)}
+.status.err{color:var(--err)}
+
+footer{background:var(--surface-inverse);color:var(--accent-on-dark);font-size:13px}
+footer .wrap{padding-block:32px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer img{width:200px;height:auto;display:block}
+
+@media (max-width:600px){
+  .cover .wrap{padding-block:28px 48px;gap:20px}
+  .cover .logo,footer img{width:160px}
+  .emo-row{font-size:26px}
+  .cover .lead{font-size:16px}
+  .cover-actions{flex-direction:column;align-items:stretch}
+  .cover-actions .btn,.form-foot .btn{width:100%}
+  .form-foot{flex-direction:column;align-items:stretch}
+  .ficha-sec,.rsvp{padding-block:48px}
+  .ficha .big{font-size:28px}
+  .values li{font-size:16px}
+  .choices{display:grid;grid-template-columns:1fr 1fr}
+  .choice span{width:100%;min-width:0;height:44px}
+  input[type=text],textarea{font-size:16px}
+  input[type=text]{height:44px}
+  footer .wrap{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="bar" aria-hidden="true"></div>
+  <div class="wrap">
+    <img class="logo" src="assets/logo-improm-white.png" alt="improm">
+    <div class="label">Invitación ✨</div>
+    <h1>Festejo de fin de año 🥂</h1>
+    <p class="when">Viernes 04 de diciembre</p>
+    <div class="lead"><p class="lead-title">¡Cerramos el año juntos! 🥂</p><p>Una noche para celebrar lo que compartimos, brindar por nuestros logros y disfrutar juntos.</p></div>
+    <div class="cover-actions">
+      <a class="btn btn-highlight" href="#confirmar" target="_self">Confirmar asistencia</a>
+      <span class="countdown" id="countdown"></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="ficha-sec">
+    <div class="wrap">
+      <div class="ficha-head">
+        <div class="label">El evento</div>
+        <h2>Lo que tenés que saber</h2>
+        <div class="rule" aria-hidden="true"></div>
+      </div>
+      <div class="ficha">
+        <div><div class="label">Fecha</div><div class="big">Vie 04/12</div></div>
+        <div><div class="label">Horario</div><div class="big">20:00 hs</div></div>
+        <div><div class="label">Lugar</div><div class="val">Presidente Bar</div><div class="sub">Hipódromo de San Isidro</div></div>
+        <div>
+          <div class="label">Acceso</div>
+          <div class="val">Esquina de Márquez y Fleming</div>
+          <a href="https://maps.app.goo.gl/jwpHZDpWuQPvzmt28" target="_blank" rel="noopener">Ver en Google Maps</a>
+        </div>
+      </div>
+      <ul class="values">
+        <li><span class="emo" aria-hidden="true">🍽️</span><strong>Comida:</strong> menú con entrada, plato principal y postre.</li>
+        <li><span class="emo" aria-hidden="true">🥂</span><strong>Bebidas:</strong> barra libre, con y sin alcohol.</li>
+        <li><span class="emo" aria-hidden="true">✨</span><strong>Dress code:</strong> vení con lo que te sientas más cómodo. La idea es que estemos todos lindos para la foto 📸</li>
+        <li><span class="emo" aria-hidden="true">🚗</span><strong>Estacionamiento:</strong> si venís en auto, hay estacionamiento en el lugar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="rsvp" id="confirmar">
+    <div class="wrap">
+      <div class="rsvp-grid">
+        <div class="rsvp-field">
+          <div class="label">RSVP</div>
+          <h2>¿Cómo confirmo?</h2>
+          <p>Confirmá tu asistencia y avisanos si tenés alguna restricción alimentaria. Si cambian tus planes, volvé a esta página desde el mismo dispositivo y actualizá tu respuesta.</p>
+        </div>
+
+        <form id="rsvpForm" novalidate>
+          <label class="field" for="nombre">
+            <span class="flabel">Nombre y apellido</span>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" maxlength="120" required>
+          </label>
+          <fieldset>
+            <legend>¿Asistirás?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" id="asistire-si" name="asistire" value="si"><span>Sí</span></label>
+              <label class="choice"><input type="radio" id="asistire-no" name="asistire" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+          <fieldset id="fsRestriccion" hidden>
+            <legend>¿Tenés alguna restricción alimentaria?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" id="restriccion-si" name="restriccion" value="si"><span>Sí</span></label>
+              <label class="choice"><input type="radio" id="restriccion-no" name="restriccion" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+          <label class="field" for="detalle" id="fDetalle" hidden>
+            <span class="flabel">¿Cuál?</span>
+            <textarea id="detalle" name="detalle" maxlength="500" placeholder="Ej.: celiaquía, vegetariano, alergia a frutos secos"></textarea>
+          </label>
+          <div class="form-foot">
+            <button type="submit" class="btn btn-primary" id="submitBtn">Enviar respuesta</button>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="fotos">
+    <div class="wrap fotos-inner">
+      <div class="fotos-text">
+        <div class="label">Después del festejo</div>
+        <h2>Compartí tus fotos 📸</h2>
+        <p>Subí las fotos que saques durante la noche a la carpeta compartida, así armamos el recuerdo entre todos.</p>
+      </div>
+      <a class="btn btn-highlight" href="https://drive.google.com/drive/folders/19wT7g0IsCaaDbWpHaMYfev2fvHWwsnZ4?usp=sharing" target="_blank" rel="noopener">Subir fotos al Drive</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-improm-grey.png" alt="improm">
+    <span>Festejo de fin de año · Viernes 04 de diciembre · 20 hs · Presidente Bar, Hipódromo de San Isidro</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // URL de la aplicación web de Apps Script (termina en /exec)
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzE00cr0lxPkUdv1TBZ7G_6dNWnGn3C9lTum0cVL2KY0LV-EpJcS5cfdsohIKslL1KTCg/exec';
+
+  var EVENT = new Date('2026-12-04T20:00:00-03:00');
+  var days = Math.ceil((EVENT - new Date()) / 86400000);
+  var cd = document.getElementById('countdown');
+  if (days > 1) cd.innerHTML = 'Faltan <b>' + days + ' días</b>';
+  else if (days === 1) cd.innerHTML = '<b>¡Es mañana!</b>';
+  else if (days === 0) cd.innerHTML = '<b>¡Es hoy!</b>';
+
+  document.querySelector('a[href="#confirmar"]').addEventListener('click', function(e){
+    e.preventDefault(); document.getElementById('confirmar').scrollIntoView({behavior:'smooth'});
+  });
+
+  function $(id){ return document.getElementById(id); }
+  var form = $('rsvpForm'), status = $('status'), btn = $('submitBtn');
+
+  var KEY = 'festejo2026_rsvp_id', id = null;
+  try { id = localStorage.getItem(KEY); } catch(e){}
+  if (!id){
+    id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2, 12));
+    try { localStorage.setItem(KEY, id); } catch(e){}
+  }
+
+  function radio(n){ var r = form.querySelector('input[name="'+n+'"]:checked'); return r ? r.value : null; }
+  function setRadio(n, v){ var r = form.querySelector('input[name="'+n+'"][value="'+v+'"]'); if (r) r.checked = true; }
+  function sync(){
+    var asiste = radio('asistire') === 'si';
+    $('fsRestriccion').hidden = !asiste;
+    $('fDetalle').hidden = !(asiste && radio('restriccion') === 'si');
+  }
+  form.addEventListener('change', sync);
+  function say(msg, kind){ status.textContent = msg; status.className = 'status' + (kind ? ' ' + kind : ''); }
+
+  // Precargar si ya respondió desde este dispositivo
+  fetch(SCRIPT_URL + '?id=' + encodeURIComponent(id))
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      var d = res && res.respuesta;
+      if (!d) return;
+      $('nombre').value = d.nombre || '';
+      if (d.asistire) setRadio('asistire', d.asistire);
+      if (d.restriccion) setRadio('restriccion', d.restriccion);
+      $('detalle').value = d.detalle || '';
+      sync();
+      btn.textContent = 'Actualizar respuesta';
+      say('Ya tenemos tu respuesta. Si querés cambiarla, editala y volvé a enviar.', 'ok');
+    })
+    .catch(function(){ /* sin precarga: el formulario sigue funcionando */ });
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var nombre = $('nombre').value.trim();
+    var asistire = radio('asistire');
+    var restriccion = asistire === 'si' ? radio('restriccion') : null;
+    var detalle = (asistire === 'si' && restriccion === 'si') ? $('detalle').value.trim() : '';
+    if (!nombre){ say('Completá tu nombre y apellido.', 'err'); $('nombre').focus(); return; }
+    if (!asistire){ say('Elegí si vas a asistir.', 'err'); return; }
+    if (asistire === 'si' && !restriccion){ say('Contanos si tenés alguna restricción alimentaria.', 'err'); return; }
+    if (restriccion === 'si' && !detalle){ say('Contanos cuál es tu restricción alimentaria.', 'err'); $('detalle').focus(); return; }
+
+    btn.disabled = true; say('Enviando…');
+    // text/plain evita el preflight de CORS, que Apps Script no responde
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ id: id, nombre: nombre, asistire: asistire, restriccion: restriccion, detalle: detalle })
+    })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        btn.disabled = false;
+        if (!res || !res.ok){ say((res && res.error) || 'No se pudo enviar. Probá de nuevo en unos segundos.', 'err'); return; }
+        btn.textContent = 'Actualizar respuesta';
+        say(asistire === 'si' ? '¡Listo, ' + nombre.split(' ')[0] + '! Te esperamos el viernes 04 a las 20 hs. 🥂' : 'Gracias por avisarnos. ¡Te vamos a extrañar!', 'ok');
+      })
+      .catch(function(){
+        btn.disabled = false;
+        say('No se pudo enviar. Revisá tu conexión y probá de nuevo.', 'err');
+      });
+  });
+})();
+</script>
+</body>
+</html>
